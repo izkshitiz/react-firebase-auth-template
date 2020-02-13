@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import {Container,Row,Col} from 'react-bootstrap';
 // import firebase from 'firebase';
 import classes from './Dashboard.module.css';
 
@@ -12,20 +11,20 @@ class Dashboard extends Component{
 render(){
 return(
 
-<Container className={classes.contentcontainer}>
-    <Row  className={classes.mainrow}>
-        <Col className={classes.firstcol} md={6}>
-            <Row>
+<div className={classes.contentcontainer}>
+    <div  className={classes.mainrow}>
+        <div className={classes.firstcol}>
+            <div>
                 <div>
                   <p>Important stuff here !</p>
             </div>
-            </Row>
-        </Col>    
-        <Col md={6}>
+            </div>
+        </div>    
+        <div>
            {/* <img className={classes.stock_illustration} src={stockillustration} alt="trading illustration"></img> */}     
-        </Col>
-    </Row>       
-</Container>
+        </div>
+    </div>       
+</div>
 
 );
 }

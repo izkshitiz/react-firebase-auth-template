@@ -84,13 +84,16 @@ font-size: 30px;
     box-shadow: -1px 27px 26px -20px rgba(0,0,0,0.75);
 }
 
-
 .logocol a
-{
+{   display: flex;
+    align-items:center;
     text-decoration: none!important;
     list-style:none;  
     color:black;
     outline:none;
+}
+.logocol>a>span{
+    margin:5px;
 }
    
 
