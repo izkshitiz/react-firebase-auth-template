@@ -52,18 +52,17 @@ const uiConfig = {
   // Other config options...
 } 
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    redirect = <Redirect to="dashboard" />
+  } else {
+    // No user is signed in.
+  }
+});
 
 
 class Landing extends Component{
-  componentWillMount(){
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        redirect = <Redirect to="dashboard" />
-      } else {
-        // No user is signed in.
-      }
-    });
-  }
+
 
 render(){
 
