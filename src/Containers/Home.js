@@ -16,6 +16,8 @@ class Home extends Component{
     
 state={
     overlaywidth:0,
+    loggedin:null,
+    loading:true,
 }
 
 openOverlay=()=>{
@@ -24,7 +26,23 @@ openOverlay=()=>{
 closeOverlay=()=>{
     this.setState({overlaywidth:0})
 }
-
+singOutUser=()=>{
+  firebase.auth().signOut().then(()=>{
+    // Sign-out successful.
+    this.closeOverlay()
+  }).catch(function(error) {
+    // An error happened.
+  })
+}
+componentWillMount(){
+  firebase.auth().onAuthStateChanged((user)  =>{
+    if (user) {
+    this.setState({loggedin:true,loading:false})
+    } else {
+    this.setState({loggedin:false,loading:false})  // No user is signed in.
+    }
+  }); 
+}
 
 render(){
 return(
@@ -37,6 +55,7 @@ return(
         <li onClick={this.closeOverlay}><Link to="/dashboard">Dashboard</Link></li>
         <li onClick={this.closeOverlay}><Link to="/about">About Us</Link></li>
         <li onClick={this.closeOverlay}><Link to="/contact">Contact Us</Link></li>
+        <li onClick={this.closeOverlay}><Link to="/signout">Sign Out</Link></li>
      </ul>
   </div>
 </div>
@@ -49,14 +68,15 @@ return(
                 <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/contact">Contact Us</Link></li>
+                <li onClick={this.singOutUser}><Link to="/signout">Sign Out</Link></li>
             </ul>
         </div>
         <span className={classes.hamburger} onClick={this.openOverlay}>&#9776;</span>
     </div>
     <div className={classes.contentcontainer}>
     <Switch>
-    <Route path='/' exact render={() => <Landing/>} />
-    <Route path='/dashboard' exact render={() => <Dashboard/>} />
+    <Route path='/' exact render={() => <Landing loading={this.state.loading} loggedin={this.state.loggedin} />} />
+    <Route path='/dashboard' exact render={() => <Dashboard loading={this.state.loading} loggedin={this.state.loggedin} />} />
     <Route path='/about' exact render={() => <About/>} />
     </Switch>
     </div>

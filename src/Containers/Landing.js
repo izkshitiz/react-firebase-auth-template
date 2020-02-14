@@ -57,27 +57,12 @@ const uiConfig = {
 
 class Landing extends Component{
 
-  state={
-    login:true,
-  }
-
-
-componentWillMount(){
-  firebase.auth().onAuthStateChanged((user) =>{
-    if (user) {
-      this.setState({login:true})
-    } else {
-      // No user is signed in.
-    }
-  });
-  
-}
 render(){
-
-
 return(
 <div className={classes.contentwrapper}>
-{this.state.login?redirect:null}
+  {this.props.loading?<p>LOading..</p>:
+(this.props.loggedin?redirect:
+<React.Fragment>
   <div className={classes.firstcol}>
     <div>
       <h1 className={classes.heading}>Learn to trade stocks and cryptocurrency</h1> 
@@ -94,6 +79,8 @@ return(
   <div className={classes.secondcol}>
     <img className={classes.stock_illustration} src={stockillustration} alt="trading illustration"></img>
   </div>
+  </React.Fragment>
+)}
 </div>
 
 );
