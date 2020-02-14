@@ -5,7 +5,8 @@ import classes from './Landing.module.css';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {Redirect} from 'react-router-dom';
-let redirect = null;  
+
+let redirect = <Redirect to="dashboard" />;  
 const firebaseConfig = {
   apiKey: "AIzaSyBsA2L7PT1D9f1t9pYt870Xgibh-FgIULQ",
   authDomain: "react-responsive-templates.firebaseapp.com",
@@ -52,24 +53,31 @@ const uiConfig = {
   // Other config options...
 } 
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    redirect = <Redirect to="dashboard" />
-  } else {
-    // No user is signed in.
-  }
-});
 
 
 class Landing extends Component{
 
+  state={
+    login:true,
+  }
 
+
+componentWillMount(){
+  firebase.auth().onAuthStateChanged((user) =>{
+    if (user) {
+      this.setState({login:true})
+    } else {
+      // No user is signed in.
+    }
+  });
+  
+}
 render(){
 
 
 return(
 <div className={classes.contentwrapper}>
-{redirect}
+{this.state.login?redirect:null}
   <div className={classes.firstcol}>
     <div>
       <h1 className={classes.heading}>Learn to trade stocks and cryptocurrency</h1> 

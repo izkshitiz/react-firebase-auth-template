@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import classes from './Home.module.css';
-import {Route,Link} from 'react-router-dom';
+import {Route,Link, Switch} from 'react-router-dom';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import About from '../Components/Aboutus';
@@ -10,16 +10,9 @@ import {Redirect} from 'react-router-dom';
 
 let redirect = null;
 
+
 class Home extends Component{
-    // componentWillMount(){
-    //     firebase.auth().onAuthStateChanged(function(user) {
-    //       if (user) {
-    //         redirect = <Redirect to="dashboard" />
-    //       } else {
-    //         // No user is signed in.
-    //       }
-    //     });
-    //   }
+
     
 state={
     overlaywidth:0,
@@ -61,10 +54,11 @@ return(
         <span className={classes.hamburger} onClick={this.openOverlay}>&#9776;</span>
     </div>
     <div className={classes.contentcontainer}>
-    {/* {redirect} */}
+    <Switch>
     <Route path='/' exact render={() => <Landing/>} />
     <Route path='/dashboard' exact render={() => <Dashboard/>} />
     <Route path='/about' exact render={() => <About/>} />
+    </Switch>
     </div>
 {/* <Route path='/dash' exact render={() => <Dashboard/>} /> */}
 </div>
