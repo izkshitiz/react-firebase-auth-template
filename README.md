@@ -16,7 +16,9 @@ A responsive react firebase authentication template made using bare minimum. It 
 
 ## Screenshot
 
-![App Screenshot](https://raw.githubusercontent.com/th3knigh7/react-responsive-templates/master/public/screenshots/desktop%20screen%20trading.png)
+![App Screenshot](https://raw.githubusercontent.com/th3knigh7/react-firebase-auth-template/master/public/screenshots/react%20firebase%20auth%20page.PNG)
+![App Screenshot loggedin](https://raw.githubusercontent.com/th3knigh7/react-firebase-auth-template/master/public/screenshots/react%20firebase%20auth%20page.PNG)
+
 
 ## HOW TO USE
 * Clone the Project.
