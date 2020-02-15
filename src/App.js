@@ -9,11 +9,11 @@ class App extends Component {
 render(){
   return (
     <BrowserRouter>
-    <React.Fragment>
-    <div className={classes.App}>
-     <Home/>
-    </div>
-    </React.Fragment>
+      <React.Fragment>
+        <div className={classes.App}>
+          <Home/>
+        </div>
+      </React.Fragment>
     </BrowserRouter>
   );
 

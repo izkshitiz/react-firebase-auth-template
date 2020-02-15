@@ -106,14 +106,14 @@ font-size: 30px;
 
 .navlist ul li
 {
- 
+    list-style-type:none;
     margin-right:10px;
 }
 
 .navlist a
 {
     font-size:14px;
-    text-transform: uppercase;
+    text-transform:uppercase;
     border-bottom:2px solid #5EFCE8;
     color:black;
     padding:5px 10px;

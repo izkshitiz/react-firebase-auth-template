@@ -14,12 +14,12 @@ A responsive react firebase authentication template made using bare minimum. It 
 * react router
 * react router dom
 
-## Examples
+## Screenshot
 
 ![App Screenshot](https://raw.githubusercontent.com/th3knigh7/react-responsive-templates/master/public/screenshots/desktop%20screen%20trading.png)
 
 ## HOW TO USE
 * Clone the Project.
-* Replace comment inside Home.js with your firebase configuration.
+* Replace comments inside Home.js with your firebase configuration.
 * Run npm install in root directory.
 * Run npm start.

@@ -6,13 +6,12 @@ import Dashboard from './Dashboard';
 import About from '../Components/Aboutus';
 import logo from "../Resources/Images/logo.svg";
 import firebase from 'firebase';
-import {Redirect} from 'react-router-dom';
+const firebaseConfig = {
+//Your firebase configuratrion here.
+};
 
-let redirect = null;
-
-
+firebase.initializeApp(firebaseConfig);
 class Home extends Component{
-
     
 state={
     overlaywidth:0,
@@ -55,7 +54,7 @@ return(
         <li onClick={this.closeOverlay}><Link to="/dashboard">Dashboard</Link></li>
         <li onClick={this.closeOverlay}><Link to="/about">About Us</Link></li>
         <li onClick={this.closeOverlay}><Link to="/contact">Contact Us</Link></li>
-        <li onClick={this.closeOverlay}><Link to="/signout">Sign Out</Link></li>
+        {this.state.loggedin?<li onClick={this.singOutUser}><Link >Sign Out</Link></li>:null}
      </ul>
   </div>
 </div>
@@ -68,7 +67,7 @@ return(
                 <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/contact">Contact Us</Link></li>
-                <li onClick={this.singOutUser}><Link to="/signout">Sign Out</Link></li>
+                {this.state.loggedin?<li onClick={this.singOutUser}><Link >Sign Out</Link></li>:null}
             </ul>
         </div>
         <span className={classes.hamburger} onClick={this.openOverlay}>&#9776;</span>
@@ -80,7 +79,6 @@ return(
     <Route path='/about' exact render={() => <About/>} />
     </Switch>
     </div>
-{/* <Route path='/dash' exact render={() => <Dashboard/>} /> */}
 </div>
 </React.Fragment>
 );

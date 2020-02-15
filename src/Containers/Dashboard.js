@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import classes from './Dashboard.module.css';
-import firebase from 'firebase';
 
 const uiConfig = {
     callbacks: {
@@ -29,7 +28,7 @@ const uiConfig = {
     },
     queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
     signInFlow:'popup',
-    signInSuccessUrl: 'dashboard',
+    signInSuccessUrl: '',//Specifying sign in success url can cause double redirect since we are also managing redirect in react-router with local state.
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -38,21 +37,18 @@ const uiConfig = {
     // Other config options...
   } 
 class Dashboard extends Component{
-state={
-        login:null,
-        loading:true,
-      }
-    
+
  
 render(){
 return(
 <div className={classes.contentwrapper}>
-{this.props.loading?<p>LOading..</p>:
-(!this.props.loggedin?<StyledFirebaseAuth
- uiConfig={uiConfig} 
- firebaseAuth={firebase.auth()} 
- className={classes.emailbox}/>:
-<p>Important stuff here !</p>
+{this.props.loading?<p>Loading..</p>:
+(!this.props.loggedin?
+<React.Fragment>
+    <p>Please sign in to see this page.</p>
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} className={classes.emailbox}/>
+ </React.Fragment>:
+<p>Private stuff here !</p>
 )}
 </div>
 

@@ -1,23 +1,12 @@
 import React,{Component} from 'react';
 import stockillustration from '../Resources/Images/stockillustration.svg';
-// import Emailsubmit from '../Components/UI/Emailsubmit/Emailsubmit';
 import classes from './Landing.module.css';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {Redirect} from 'react-router-dom';
 
 let redirect = <Redirect to="dashboard" />;  
-const firebaseConfig = {
-  apiKey: "AIzaSyBsA2L7PT1D9f1t9pYt870Xgibh-FgIULQ",
-  authDomain: "react-responsive-templates.firebaseapp.com",
-  databaseURL: "https://react-responsive-templates.firebaseio.com",
-  projectId: "react-responsive-templates",
-  storageBucket: "react-responsive-templates.appspot.com",
-  messagingSenderId: "770038562476",
-  appId: "1:770038562476:web:9fe58ef18bfd8575b56909"
-};
 
-firebase.initializeApp(firebaseConfig);
 
 const uiConfig = {
   callbacks: {
@@ -44,7 +33,7 @@ const uiConfig = {
   },
   queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
   signInFlow:'popup',
-  signInSuccessUrl: 'dashboard',
+  signInSuccessUrl: '',//Specifying sign in success url can cause double redirect since we are also managing redirect in react-router with local state.
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
